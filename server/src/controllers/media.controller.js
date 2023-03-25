@@ -11,7 +11,7 @@ const getList = async (req, res) => {
 
     const {mediaType, mediaCategory} =req.params
 
-    cosnt response = await tmdbApi.mediaList({mediaType, mediaCategory, page})
+    const response = await tmdbApi.mediaList({mediaType, mediaCategory, page})
 
     return responseHandler.ok(res, response)
     
