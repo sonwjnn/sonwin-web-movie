@@ -84,7 +84,7 @@ const updatePassword = async (req, res) => {
   }
 }
 
-cosnt getInfo = async (req, res) => {
+const getInfo = async (req, res) => {
   try {
     const user = await userModel.findById(req,user.id)
 

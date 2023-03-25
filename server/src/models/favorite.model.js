@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-import modelOptions from "./model.option";
+import modelOptions from "./model.option.js";
 
 const favoriteScheme = mongoose.Schema(
   {
@@ -33,4 +33,4 @@ const favoriteScheme = mongoose.Schema(
   modelOptions
 );
 
-export default favoriteModel = mongoose.model("Favorite", favoriteScheme);
+export default mongoose.model("Favorite", favoriteScheme);
