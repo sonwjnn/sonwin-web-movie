@@ -27,6 +27,8 @@ const userSchema = mongoose.Schema(
   modelOptions
 )
 
+// use pbkdf2Sync or brypt(this library do better hash password than pb.....)
+// compare this.password hashed
 userSchema.methods.setPassword = function (password) {
   this.salt = crypto.randomBytes(16).toString('hex')
 

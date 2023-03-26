@@ -76,6 +76,7 @@ const updatePassword = async (req, res) => {
 
     user.setPassword(newPassword)
 
+    //save to database
     await user.save()
 
     responseHandler.ok(res)
@@ -86,15 +87,13 @@ const updatePassword = async (req, res) => {
 
 const getInfo = async (req, res) => {
   try {
-    const user = await userModel.findById(req,user.id)
+    const user = await userModel.findById(req, user.id)
 
-    if(!user) return responseHandler.notfound(res)
+    if (!user) return responseHandler.notfound(res)
 
     responseHandler.ok(res, user)
-    
   } catch (error) {
     responseHandler.error(error)
-    
   }
 }
 
