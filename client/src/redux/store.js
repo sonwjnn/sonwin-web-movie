@@ -6,13 +6,13 @@ import authModelSlice from './features/authModelSlice'
 import globalLoadingSlice from './features/globalLoadingSlice'
 
 const store = configureStore({
-  reduver: {
+  reducer: {
     user: userSlice,
     themeMode: themeModeSlice,
     appState: appStateSlice,
     authModel: authModelSlice,
-    globalLoading: globalLoadingSlice
-  }
+    globalLoading: globalLoadingSlice,
+  },
 })
 
 export default store
