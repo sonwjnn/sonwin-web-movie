@@ -17,6 +17,9 @@ import {
   Toolbar,
   IconButton,
   useScrollTrigger,
+  FormControlLabel,
+  Checkbox,
+  Typography,
 } from '@mui/material'
 import UserMenu from './UserMenu'
 
@@ -53,6 +56,7 @@ const Topbar = () => {
 
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
+  // Change theme and dispatch action to set theme
   const onSwitchTheme = () => {
     const theme =
       themeMode === themeModes.dark ? themeModes.light : themeModes.dark
