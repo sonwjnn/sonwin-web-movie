@@ -7,11 +7,11 @@ import favoriteController from '../controllers/favorite.controller.js'
 
 const router = express.Router({ mergeParams: true })
 
-router.get('/', tokenMiddleware.auth, reviewController.getReviewOfUser)
+router.get('/', tokenMiddleware.auth, reviewController.getReviewsOfUser)
 
 router.post(
   '/',
-
+  tokenMiddleware.auth,
   body('mediaId')
     .exists()
     .withMessage('mediaId is required')
@@ -31,7 +31,7 @@ router.post(
   body('mediaPoster').exists().withMessage('media poster title is required'),
   body('mediaRate').exists().withMessage('media rate is required'),
   requestHandler.validate,
-  reviewController.addFavorite
+  reviewController.create
 )
 
 router.delete('/:reviewId', tokenMiddleware.auth, reviewController.remove)

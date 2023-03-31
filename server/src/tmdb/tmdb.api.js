@@ -1,5 +1,5 @@
-import axiosClient from "../axios/axios.client";
-import tmdbEndpoints from "./tmdb.endpoints";
+import axiosClient from '../axios/axios.client.js'
+import tmdbEndpoints from './tmdb.endpoints.js'
 
 const tmdbApi = {
   mediaList: async ({ mediaType, mediaCategory, page }) =>
@@ -11,36 +11,34 @@ const tmdbApi = {
     await axiosClient.get(tmdbEndpoints.mediaDetail({ mediaType, page })),
 
   mediaGenres: async ({ mediaType }) => {
-    await axiosClient.get(tmdbEndpoints.mediaGenres({ mediaType }));
+    await axiosClient.get(tmdbEndpoints.mediaGenres({ mediaType }))
   },
 
   mediaCredits: async ({ mediaType, mediaId }) => {
-    await axiosClient.get(tmdbEndpoints.mediaCredits({ mediaType, mediaId }));
+    await axiosClient.get(tmdbEndpoints.mediaCredits({ mediaType, mediaId }))
   },
 
   mediaVideos: async ({ mediaType, mediaId }) => {
-    await axiosClient.get(tmdbEndpoints.mediaVideos({ mediaType, mediaId }));
+    await axiosClient.get(tmdbEndpoints.mediaVideos({ mediaType, mediaId }))
   },
 
   mediaImages: async ({ mediaType, mediaId }) => {
-    await axiosClient.get(tmdbEndpoints.mediaImages({ mediaType, mediaId }));
+    await axiosClient.get(tmdbEndpoints.mediaImages({ mediaType, mediaId }))
   },
 
   mediaRecommend: async ({ mediaType, mediaId }) => {
-    await axiosClient.get(tmdbEndpoints.mediaRecommend({ mediaType, mediaId }));
+    await axiosClient.get(tmdbEndpoints.mediaRecommend({ mediaType, mediaId }))
   },
 
   mediaSearch: async ({ mediaType, query, page }) => {
-    await axiosClient.get(
-      tmdbEndpoints.mediaSearch({ mediaType, query, page })
-    );
+    await axiosClient.get(tmdbEndpoints.mediaSearch({ mediaType, query, page }))
   },
 
   personDetail: async ({ personID }) =>
     await axiosClient.get(tmdbEndpoints.personDetail({ personID })),
 
   personMedias: async ({ personID }) =>
-    await axiosClient.get(tmdbEndpoints.personMedias({ personID })),
-};
+    await axiosClient.get(tmdbEndpoints.personMedias({ personID }))
+}
 
-export default tmdbApi;
+export default tmdbApi

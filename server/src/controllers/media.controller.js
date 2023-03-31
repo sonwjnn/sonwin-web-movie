@@ -1,6 +1,6 @@
-import responseHandler from '../handlers/response.handler'
+import responseHandler from '../handlers/response.handler.js'
 import tmdbApi from '../tmdb/tmdb.api.js'
-import userModel from '../models/user.model'
+import userModel from '../models/user.model.js'
 import favoriteModel from '../models/favorite.model.js'
 import reviewModel from '../models/review.model.js'
 import tokenMiddleWare from '../middlewares/token.middleware.js'
@@ -11,11 +11,7 @@ const getList = async (req, res) => {
 
     const { mediaType, mediaCategory } = req.params
 
-<<<<<<< Updated upstream
-    const response = await tmdbApi.mediaList({mediaType, mediaCategory, page})
-=======
     const response = await tmdbApi.mediaList({ mediaType, mediaCategory, page })
->>>>>>> Stashed changes
 
     return responseHandler.ok(res, response)
   } catch (error) {
