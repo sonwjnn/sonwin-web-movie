@@ -32,6 +32,7 @@ const ScrollAppBar = ({ children, window }) => {
     target: window ? window() : undefined,
   })
 
+  // Add new style for top bar when scroll with ScrollAppBar is wrapper to get child
   return cloneElement(children, {
     sx: {
       color: trigger
