@@ -1,13 +1,13 @@
-import { ThemeProvider } from '@mui/material/styles'
-import themeConfigs from './configs/theme.configs'
 import { useSelector } from 'react-redux'
+import { ThemeProvider } from '@mui/material/styles'
 import { ToastContainer } from 'react-toastify'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import PageWrapper from './components/common/PageWrapper'
 import CssBaseline from '@mui/material/CssBaseline'
-import MainLayout from './components/layout/MainLayout.jsx'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import routes from './routes/routes.jsx'
-import PageWrapper from './components/common/PageWrapper.jsx'
-import './App.css'
+import MainLayout from './components/layout/MainLayout'
+import themeConfigs from './configs/theme.configs'
+import routes from './routes/routes'
+import NotFound from './components/common/NotFound'
 
 const App = () => {
   const { themeMode } = useSelector(state => state.themeMode)
@@ -29,10 +29,10 @@ const App = () => {
       <CssBaseline />
 
       {/* app routes */}
-      <BrowserRouter>
+      <Router>
         <Routes>
           <Route path="/" element={<MainLayout />}>
-            {routes.map((route, index) => {
+            {routes.map((route, index) =>
               route.index ? (
                 <Route
                   index
@@ -62,10 +62,11 @@ const App = () => {
                   }
                 />
               )
-            })}
+            )}
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </Router>
 
       {/* app routes */}
     </ThemeProvider>

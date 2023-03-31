@@ -4,25 +4,29 @@ import GlobalLoading from '../common/GlobalLoading.jsx'
 import Footer from '../common/Footer.jsx'
 import Topbar from '../common/Topbar.jsx'
 
+// Layout use for all pages
 const MainLayout = () => {
   return (
     <>
       {/* global loading*/}
       <GlobalLoading />
       {/* global loading*/}
+
       {/* login loading*/}
       {/* login loading*/}
+
       <Box display="flex" minHeight="100vh">
         {/* header */}
-        // <Topbar />
+        <Topbar />
         {/* header */}
         <Box component="main" flexGrow={1} overflow="hidden" minHeight="100vh">
           <Outlet />
         </Box>
         {/* main */}
       </Box>
+
       {/* footer */}
-      // <Footer />
+      <Footer />
       {/* footer */}
     </>
   )
