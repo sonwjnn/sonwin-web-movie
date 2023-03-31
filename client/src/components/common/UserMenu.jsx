@@ -42,7 +42,9 @@ const UserMenu = () => {
                 key={index}
                 onClick={() => setAnchorEl(null)}
               >
-                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemIcon>
+                  <item.icon />
+                </ListItemIcon>
                 <ListItemText
                   disableTypography
                   primary={

@@ -6,7 +6,7 @@ import MenuIcon from '@mui/icons-material/Menu'
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined'
 import { themeModes } from '../../configs/theme.configs'
-import { setAuthModelOpen } from '../../redux/features/authModelSlice'
+import { setAuthModalOpen } from '../../redux/features/authModalSlice'
 import { setThemeMode } from '../../redux/features/themeModeSlice'
 import Logo from './Logo'
 import {
@@ -22,6 +22,7 @@ import {
   Typography,
 } from '@mui/material'
 import UserMenu from './UserMenu'
+import Sidebar from './Sidebar'
 
 const ScrollAppBar = ({ children, window }) => {
   const { themeMode } = useSelector(state => state.themeMode)
@@ -64,9 +65,11 @@ const Topbar = () => {
 
     dispatch(setThemeMode(theme))
   }
+  const toggleSidebar = () => setSidebarOpen(!sidebarOpen)
 
   return (
     <>
+      <Sidebar open={sidebarOpen} toggleSidebar={toggleSidebar} />
       <ScrollAppBar>
         <AppBar elevation={0} sx={{ zIndex: 9999 }}>
           <Toolbar
@@ -76,6 +79,7 @@ const Topbar = () => {
               <IconButton
                 color="inherit"
                 sx={{ mr: 2, display: { md: 'none' } }}
+                onClick={toggleSidebar}
               >
                 <MenuIcon />
               </IconButton>
@@ -119,7 +123,18 @@ const Topbar = () => {
             {/* main menu */}
 
             {/* user menu */}
-            <UserMenu />
+            <Stack spacing={3} direction="row" alignItems="center">
+              {!user && (
+                <Button
+                  variant="contained"
+                  onClick={() => dispatch(setAuthModalOpen(true))}
+                >
+                  sign in
+                </Button>
+              )}
+            </Stack>
+            {user && <UserMenu />}
+
             {/* user menu */}
           </Toolbar>
         </AppBar>
