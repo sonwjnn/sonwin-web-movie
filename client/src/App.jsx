@@ -8,6 +8,7 @@ import MainLayout from './components/layout/MainLayout'
 import themeConfigs from './configs/theme.configs'
 import routes from './routes/routes'
 import NotFound from './components/common/NotFound'
+import 'react-toastify/dist/ReactToastify.css'
 
 const App = () => {
   const { themeMode } = useSelector(state => state.themeMode)

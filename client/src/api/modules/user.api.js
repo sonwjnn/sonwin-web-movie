@@ -7,7 +7,7 @@ const userEndpoints = {
   getInfo: 'user/info',
   passwordUpdate: 'user/update-password',
   getFavorites: 'user/favorites',
-  addFavorite: 'user/favorites'
+  addFavorite: 'user/favorites',
 }
 
 const userApi = {
@@ -15,8 +15,9 @@ const userApi = {
     try {
       const response = await publicClient.post(userEndpoints.signin, {
         username,
-        password
+        password,
       })
+
       return { response }
     } catch (error) {
       return { error }
@@ -28,7 +29,7 @@ const userApi = {
         username,
         password,
         confirmPassword,
-        displayName
+        displayName,
       })
       return { response }
     } catch (error) {
@@ -48,31 +49,13 @@ const userApi = {
       const response = await privateClient.put(userEndpoints.signup, {
         username,
         newPassword,
-        confirmNewPassword
+        confirmNewPassword,
       })
       return { response }
     } catch (error) {
       return { error }
     }
   },
-  signin: async ({}) => {
-    try {
-    } catch (error) {
-      return { error }
-    }
-  },
-  signin: async ({}) => {
-    try {
-    } catch (error) {
-      return { error }
-    }
-  },
-  signin: async ({}) => {
-    try {
-    } catch (error) {
-      return { error }
-    }
-  }
 }
 
 export default userApi

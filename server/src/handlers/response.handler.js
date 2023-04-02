@@ -1,4 +1,5 @@
-const responseWithData = (req, res, next) => res.status(statusCode).json(data)
+const responseWithData = (res, statusCode, data) =>
+  res.status(statusCode).json(data)
 
 const error = res =>
   responseWithData(res, 500, {
@@ -9,7 +10,7 @@ const error = res =>
 const badrequest = (res, message) =>
   responseWithData(res, 400, {
     status: 400,
-    message
+    message: message
   })
 
 const ok = (res, data) => responseWithData(res, 200, data)
