@@ -9,7 +9,7 @@ const tokenDecode = req => {
 
     if (bearerHeader) {
       const token = bearerHeader.split(' ')[1]
-      return jsonwebtoken.verify(token, process.env.TOKEN_SECRET)
+      return jsonwebtoken.verify(token, process.env.SECRET_TOKEN)
     }
 
     return false
@@ -21,11 +21,15 @@ const tokenDecode = req => {
 const auth = async (req, res, next) => {
   const tokenDecoded = tokenDecode(req)
 
-  if (!tokenDecoded) return responseHandler.unauthorized(res)
+  if (!tokenDecoded) {
+    return responseHandler.unauthorized(res)
+  }
 
   const user = await userModel.findById(tokenDecoded.data)
 
-  if (!user) return responseHandler.unauthorized(res)
+  if (!user) {
+    return responseHandler.unauthorized(res)
+  }
 
   req.user = user
 

@@ -20,7 +20,7 @@ const signup = async (req, res) => {
 
     const token = jsonwebtoken.sign(
       { data: user.id },
-      process.env.TOKEN_SECRET,
+      process.env.SECRET_TOKEN,
       { expiresIn: '24h' }
     )
 
@@ -51,7 +51,7 @@ const signin = async (req, res) => {
 
     const token = jsonwebtoken.sign(
       { data: user.id },
-      process.env.TOKEN_SECRET,
+      process.env.SECRET_TOKEN,
       { expiresIn: '24h' }
     )
 
@@ -90,13 +90,14 @@ const updatePassword = async (req, res) => {
 
 const getInfo = async (req, res) => {
   try {
-    const user = await userModel.findById(req, user.id)
+    const user = await userModel.findById(req.user.id)
 
     if (!user) return responseHandler.notfound(res)
 
     responseHandler.ok(res, user)
   } catch (error) {
-    responseHandler.error(error)
+    // responseHandler.error(error)
+    console.log(error)
   }
 }
 

@@ -17,7 +17,7 @@ router.post(
     .withMessage('username minium 8 characters')
     .custom(async value => {
       const user = await userModel.findOne({ username: value })
-      if (user) return requestHandler.reject('username already used')
+      if (user) return Promise.reject('username already used')
     }),
   body('password')
     .exists()
@@ -30,7 +30,7 @@ router.post(
     .isLength({ min: 9 })
     .withMessage('confirm password minium 8 characters')
     .custom((value, { req }) => {
-      if (value !== request.body.password)
+      if (value !== req.body.password)
         throw new Error('confirm password not match')
       return true
     }),

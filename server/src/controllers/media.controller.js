@@ -15,6 +15,7 @@ const getList = async (req, res) => {
 
     return responseHandler.ok(res, response)
   } catch (error) {
+    // console.log({ error })
     responseHandler.error(res)
   }
 }
