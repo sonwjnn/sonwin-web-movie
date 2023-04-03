@@ -45,7 +45,6 @@ const HeroSlide = ({ mediaType, mediaCategory }) => {
     const getGenres = async () => {
       dispatch(setGlobalLoading(true))
       const { response, err } = await genreApi.getList({ mediaType })
-      console.log({ response, err })
 
       if (response) {
         setGenres(response.genres)
@@ -73,7 +72,7 @@ const HeroSlide = ({ mediaType, mediaCategory }) => {
           bottom: 0,
           left: 0,
           zIndex: 2,
-          pointerEvent: 'none',
+          pointerEvents: 'none',
           ...uiConfigs.style.gradientBgImage[theme.palette.mode],
         },
       }}
@@ -83,10 +82,10 @@ const HeroSlide = ({ mediaType, mediaCategory }) => {
         loop={true}
         modules={[Autoplay]}
         style={{ width: '100%', height: 'max-content' }}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
+        // autoplay={{
+        //   delay: 3000,
+        //   disableOnInteraction: false,
+        // }}
       >
         {movies.map((movie, index) => (
           <SwiperSlide key={index}>

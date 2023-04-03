@@ -4,7 +4,7 @@ const reviewEndpoints = {
   list: 'reviews',
   add: 'review',
 
-  remove: ({ reviewId }) => `reviews/${reviewId}`
+  remove: ({ reviewId }) => `reviews/${reviewId}`,
 }
 
 const reviewApi = {
@@ -15,7 +15,7 @@ const reviewApi = {
         mediaType,
         mediaTitle,
         mediaPoster,
-        content
+        content,
       })
       return { response }
     } catch (error) {
@@ -24,9 +24,11 @@ const reviewApi = {
   },
   remove: async ({ reviewId }) => {
     try {
-      const response = await privateClient.delete(reviewEndpoints.remove, {
-        reviewId
-      })
+      const response = await privateClient.delete(
+        reviewEndpoints.remove({
+          reviewId,
+        })
+      )
       return { response }
     } catch (error) {
       return { error }
@@ -34,12 +36,12 @@ const reviewApi = {
   },
   getList: async () => {
     try {
-      const response = await privateClient.get(reviewEndpoints.remove)
+      const response = await privateClient.get(reviewEndpoints.list)
       return { response }
     } catch (error) {
       return { error }
     }
-  }
+  },
 }
 
 export default reviewApi

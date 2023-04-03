@@ -2,21 +2,21 @@ const uiConfigs = {
   style: {
     gradientBgImage: {
       dark: {
-        backgroundimage:
+        backgroundImage:
           'linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))',
       },
       light: {
-        backgroundimage:
+        backgroundImage:
           'linear-gradient(to top, rgba(245, 245, 245, 1), rgba(0, 0, 0, 0))',
       },
     },
     horizontalGradientBgImage: {
       dark: {
-        backgroundimage:
+        backgroundImage:
           'linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))',
       },
       light: {
-        backgroundimage:
+        backgroundImage:
           'linear-gradient(to right, rgba(245, 245, 245, 1), rgba(0, 0, 0, 0))',
       },
     },
@@ -25,7 +25,7 @@ const uiConfigs = {
       display: '-webkit-box',
       overflow: 'hidden',
       WebkitBoxOrient: 'vertical',
-      WebkitLineClamp: 'lines',
+      WebkitLineClamp: lines,
     }),
     mainContent: {
       maxWidth: '1366px',

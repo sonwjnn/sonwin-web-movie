@@ -7,13 +7,13 @@ const genreEndpoints = {
 const genreApi = {
   getList: async ({ mediaType }) => {
     try {
-      //errorrrr
-      const response = await publicClient.get(genreEndpoints.list, {
-        mediaType,
-      })
+      const response = await publicClient.get(
+        genreEndpoints.list({
+          mediaType,
+        })
+      )
       return { response }
     } catch (error) {
-      console.log({ error })
       return { error }
     }
   },

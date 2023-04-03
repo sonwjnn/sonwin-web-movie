@@ -11,13 +11,14 @@ const mediaEndpoints = {
 
 const mediaApi = {
   getList: async ({ mediaType, mediaCategory, page }) => {
-    console.log(mediaCategory, mediaCategory, page)
     try {
-      const response = await privateClient.get(mediaEndpoints.list, {
-        mediaType,
-        mediaCategory,
-        page,
-      })
+      const response = await privateClient.get(
+        mediaEndpoints.list({
+          mediaType,
+          mediaCategory,
+          page,
+        })
+      )
       return { response }
     } catch (error) {
       return { error }
@@ -25,10 +26,12 @@ const mediaApi = {
   },
   getDetail: async ({ mediaType, mediaId }) => {
     try {
-      const response = await privateClient.get(mediaEndpoints.detail, {
-        mediaType,
-        mediaId,
-      })
+      const response = await privateClient.get(
+        mediaEndpoints.detail({
+          mediaType,
+          mediaId,
+        })
+      )
       return { response }
     } catch (error) {
       return { error }
@@ -36,11 +39,13 @@ const mediaApi = {
   },
   search: async ({ mediaType, query, page }) => {
     try {
-      const response = await privateClient.get(mediaEndpoints.search, {
-        mediaType,
-        query,
-        page,
-      })
+      const response = await privateClient.get(
+        mediaEndpoints.search({
+          mediaType,
+          query,
+          page,
+        })
+      )
       return { response }
     } catch (error) {
       return { error }

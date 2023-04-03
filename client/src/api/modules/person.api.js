@@ -2,15 +2,17 @@ import publicClient from '../client/public.client'
 
 const personEndpoints = {
   detail: ({ personId }) => `person/${personId}`,
-  medias: ({ personId }) => `person/${personId}/medias`
+  medias: ({ personId }) => `person/${personId}/medias`,
 }
 
 const personApi = {
   detail: async ({ personId }) => {
     try {
-      const response = await privateClient.get(personEndpoints.detail, {
-        personId
-      })
+      const response = await privateClient.get(
+        personEndpoints.detail({
+          personId,
+        })
+      )
       return { response }
     } catch (error) {
       return { error }
@@ -18,12 +20,14 @@ const personApi = {
   },
   medias: async ({ personId }) => {
     try {
-      const response = await privateClient.get(personEndpoints.medias, {
-        personId
-      })
+      const response = await privateClient.get(
+        personEndpoints.medias({
+          personId,
+        })
+      )
       return { response }
     } catch (error) {
       return { error }
     }
-  }
+  },
 }
