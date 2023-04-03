@@ -21,6 +21,7 @@ import favoriteApi from '../api/modules/favorite.api'
 import { setGlobalLoading } from '../redux/features/globalLoadingSlice'
 import { setAuthModalOpen } from '../redux/features/authModalSlice'
 import { addFavorite, removeFavorite } from '../redux/features/userSlice'
+import CastSlide from '../components/common/CastSlide'
 
 const MediaDetail = () => {
   const { mediaType, mediaId } = useParams()
@@ -141,6 +142,54 @@ const MediaDetail = () => {
                   {/* genres */}
                 </Stack>
                 {/* rate and genres */}
+
+                {/* overview */}
+                <Typography
+                  variant="body1"
+                  sx={{ ...uiConfigs.style.typoLines(5) }}
+                >
+                  {media.overview}
+                </Typography>
+                {/* overview */}
+
+                {/* buttons */}
+                <Stack direction="row" spacing={1}>
+                  <LoadingButton
+                    variant="text"
+                    sx={{
+                      width: 'max-content',
+                      '& .MuiBuntton-startIcon': { marginRight: '8' },
+                    }}
+                    size="large"
+                    startIcon={
+                      isFavorite ? (
+                        <FavoriteIcon />
+                      ) : (
+                        <FavoriteBorderOutlinedIcon />
+                      )
+                    }
+                    loadingPosition="start"
+                    loading={onRequest}
+                    // onClick={}
+                  />
+
+                  <Button
+                    variant="contained"
+                    sx={{ width: 'max-content' }}
+                    size="large"
+                    startIcon={<PlayArrowIcon />}
+                    onClick={() => videoRef.current.scrollIntoView()}
+                  >
+                    watch now
+                  </Button>
+                </Stack>
+                {/* buttons */}
+
+                {/* cast */}
+                <Container header="Cast">
+                  <CastSlide casts={media.credits.cast} />
+                </Container>
+                {/* cast */}
               </Stack>
             </Box>
             {/* media info */}
