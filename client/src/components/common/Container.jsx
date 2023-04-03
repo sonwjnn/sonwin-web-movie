@@ -13,7 +13,7 @@ const Container = ({ header, children }) => {
         {header && (
           <Box
             sx={{
-              position: relative,
+              position: 'relative',
               paddingX: { xs: '20px', md: 0 },
               maxWidth: '1366px',
               marginX: 'auto',
@@ -29,7 +29,7 @@ const Container = ({ header, children }) => {
               },
             }}
           >
-            <Typography variant="h5" fontWeight="700">
+            <Typography variant="h5" fontWeight="700" textTransform="uppercase">
               {header}
             </Typography>
           </Box>
