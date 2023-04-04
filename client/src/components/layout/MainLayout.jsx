@@ -32,8 +32,6 @@ const MainLayout = () => {
   useEffect(() => {
     const getFavorites = async () => {
       const { response, err } = await favoriteApi.getList()
-      console.log({ response })
-      console.log(err)
 
       if (response) dispatch(setListFavorites(response))
       if (err) toast.error(err.message)

@@ -2,7 +2,7 @@ import privateClient from '../client/private.client'
 
 const reviewEndpoints = {
   list: 'reviews',
-  add: 'review',
+  add: 'reviews',
 
   remove: ({ reviewId }) => `reviews/${reviewId}`,
 }
@@ -17,6 +17,7 @@ const reviewApi = {
         mediaPoster,
         content,
       })
+
       return { response }
     } catch (error) {
       return { error }
