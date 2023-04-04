@@ -108,11 +108,10 @@ router.post(
     .exists()
     .withMessage('media id is required')
     .isLength({ min: 2 })
-    .withMessage('media cannot be empty'),
+    .withMessage('media id cannot be empty'),
   body('mediaTitle').exists().withMessage('media title is required'),
   body('mediaPoster').exists().withMessage('media poster title is required'),
   body('mediaRate').exists().withMessage('media rate is required'),
-  requestHandler.validate,
   favoriteController.addFavorite
 )
 

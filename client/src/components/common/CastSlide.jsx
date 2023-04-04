@@ -22,7 +22,7 @@ const CastSlide = ({ casts }) => {
         style={{ width: '100%', height: 'max-content' }}
       >
         {casts.map((cast, index) => (
-          <SwiperSlide key={index}>
+          <SwiperSlide key={index} style={{ width: '40%' }}>
             <Link to={routesGen.person(cast.id)}>
               <Box
                 sx={{
@@ -32,7 +32,22 @@ const CastSlide = ({ casts }) => {
                     tmdbConfigs.posterPath(cast.profile_path)
                   ),
                 }}
-              />
+              >
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    width: '100%',
+                    height: 'max-content',
+                    bottom: 0,
+                    padding: '10px',
+                    backgroundColor: 'rgba(0,0,0,0.6)',
+                  }}
+                >
+                  <Typography sx={{ ...uiConfigs.style.typoLines(1, 'left') }}>
+                    {cast.name}
+                  </Typography>
+                </Box>
+              </Box>
             </Link>
           </SwiperSlide>
         ))}
