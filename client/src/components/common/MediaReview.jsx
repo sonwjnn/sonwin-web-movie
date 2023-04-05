@@ -26,7 +26,8 @@ const ReviewItem = ({ review, onRemoved }) => {
     if (onRequest) return
     setOnRequest(true)
 
-    const { response, err } = await reviewApi.remove({ reviewId: review.id })
+    console.log(review)
+    const { response, err } = await reviewApi.remove({ reviewId: review._id })
 
     setOnRequest(false)
     if (err) toast.error(err.message)
