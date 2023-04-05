@@ -26,13 +26,13 @@ const ReviewItem = ({ review, onRemoved }) => {
     if (onRequest) return
     setOnRequest(true)
 
-    console.log(review)
     const { response, err } = await reviewApi.remove({ reviewId: review._id })
 
     setOnRequest(false)
     if (err) toast.error(err.message)
     if (response) onRemoved(review.id)
   }
+  console.log('review content props: ' + review.content)
   return (
     <Box
       sx={{
@@ -92,6 +92,7 @@ const MediaReview = ({ reviews, media, mediaType }) => {
   const [onRequest, setOnRequest] = useState(false)
   const [content, setContent] = useState('')
   const [reviewCount, setReviewCount] = useState(0)
+  console.log('content: ' + content)
 
   const skip = 4
 
@@ -113,7 +114,6 @@ const MediaReview = ({ reviews, media, mediaType }) => {
     }
 
     const { response, err } = await reviewApi.add(body)
-    console.log(response)
     setOnRequest(false)
 
     if (err) toast.error(err.message)
@@ -130,12 +130,13 @@ const MediaReview = ({ reviews, media, mediaType }) => {
     setFilteredReviews([
       ...filteredReviews,
       ...[...listReviews].splice(page * skip, skip),
-      setPage(page + 1),
+      ,
     ])
+    setPage(page + 1)
   }
 
   const onRemoved = id => {
-    if (listReviews.findIndex(e => e.id === id) !== 1) {
+    if (listReviews.findIndex(e => e.id === id) !== -1) {
       const newListReviews = [...listReviews].filter(e => e.id !== id)
       setListReviews(newListReviews)
       setFilteredReviews([...newListReviews].splice(0, page * skip))
@@ -150,7 +151,7 @@ const MediaReview = ({ reviews, media, mediaType }) => {
 
   return (
     <>
-      <Container header={`Review (${reviewCount})`}>
+      <Container header={`Reviews (${reviewCount})`}>
         <Stack spacing={4} marginBottom={2}>
           {filteredReviews.map(item => (
             <Box key={item.id}>
