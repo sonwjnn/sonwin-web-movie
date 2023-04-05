@@ -30,9 +30,9 @@ const ReviewItem = ({ review, onRemoved }) => {
 
     setOnRequest(false)
     if (err) toast.error(err.message)
-    if (response) onRemoved(review.id)
+    if (response) onRemoved(review._id)
   }
-  console.log('review content props: ' + review.content)
+
   return (
     <Box
       sx={{
@@ -58,7 +58,7 @@ const ReviewItem = ({ review, onRemoved }) => {
             </Typography>
           </Stack>
           <Typography variant="body1" textAlign="justify">
-            {review.content}
+            {review.content ? review.content : 'no content'}
           </Typography>
           {user && user.id === review.user.id && (
             <LoadingButton
@@ -92,7 +92,6 @@ const MediaReview = ({ reviews, media, mediaType }) => {
   const [onRequest, setOnRequest] = useState(false)
   const [content, setContent] = useState('')
   const [reviewCount, setReviewCount] = useState(0)
-  console.log('content: ' + content)
 
   const skip = 4
 
@@ -153,8 +152,8 @@ const MediaReview = ({ reviews, media, mediaType }) => {
     <>
       <Container header={`Reviews (${reviewCount})`}>
         <Stack spacing={4} marginBottom={2}>
-          {filteredReviews.map(item => (
-            <Box key={item.id}>
+          {filteredReviews.map((item, index) => (
+            <Box key={index}>
               <ReviewItem review={item} onRemoved={onRemoved} />
               <Divider
                 sx={{
