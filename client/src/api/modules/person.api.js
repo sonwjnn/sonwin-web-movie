@@ -8,7 +8,7 @@ const personEndpoints = {
 const personApi = {
   detail: async ({ personId }) => {
     try {
-      const response = await privateClient.get(
+      const response = await publicClient.get(
         personEndpoints.detail({
           personId,
         })
@@ -20,7 +20,7 @@ const personApi = {
   },
   medias: async ({ personId }) => {
     try {
-      const response = await privateClient.get(
+      const response = await publicClient.get(
         personEndpoints.medias({
           personId,
         })
@@ -31,3 +31,5 @@ const personApi = {
     }
   },
 }
+
+export default personApi

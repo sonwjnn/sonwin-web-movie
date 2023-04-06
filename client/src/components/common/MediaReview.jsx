@@ -32,7 +32,7 @@ const ReviewItem = ({ review, onRemoved }) => {
     if (err) toast.error(err.message)
     if (response) onRemoved(review._id)
   }
-
+  
   return (
     <Box
       sx={{
