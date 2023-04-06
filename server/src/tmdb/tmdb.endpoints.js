@@ -1,8 +1,8 @@
-import tmdbConfig from "./tmdb.config.js";
+import tmdbConfig from './tmdb.config.js'
 
 const tmdbEndpoints = {
   mediaList: ({ mediaType, mediaCategory, page }) =>
-    tmdbConfig.getUrl(`${mediaType}/${mediaCategory}`, page),
+    tmdbConfig.getUrl(`${mediaType}/${mediaCategory}`, { page }),
 
   mediaDetail: ({ mediaType, mediaId }) =>
     tmdbConfig.getUrl(`${mediaType}/${mediaId}`),
@@ -24,9 +24,9 @@ const tmdbEndpoints = {
   mediaSearch: ({ mediaType, query, page }) =>
     tmdbConfig.getUrl(`search/${mediaType}`, { query, page }),
 
-  personDetails: ({ personId }) => tmdbConfig.getUrl(`person/${personId}`),
+  personDetail: ({ personId }) => tmdbConfig.getUrl(`person/${personId}`),
 
   personMedias: ({ personId }) =>
-    tmdbConfig.getUrl(`person/${personId}/combined_credits`),
-};
-export default tmdbEndpoints;
+    tmdbConfig.getUrl(`person/${personId}/combined_credits`)
+}
+export default tmdbEndpoints

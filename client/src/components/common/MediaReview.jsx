@@ -32,7 +32,6 @@ const ReviewItem = ({ review, onRemoved }) => {
     if (err) toast.error(err.message)
     if (response) onRemoved(review.id)
   }
-  console.log('review content props: ' + review.content)
   return (
     <Box
       sx={{
@@ -92,7 +91,6 @@ const MediaReview = ({ reviews, media, mediaType }) => {
   const [onRequest, setOnRequest] = useState(false)
   const [content, setContent] = useState('')
   const [reviewCount, setReviewCount] = useState(0)
-  console.log('content: ' + content)
 
   const skip = 4
 

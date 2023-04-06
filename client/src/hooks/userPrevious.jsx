@@ -5,7 +5,7 @@ const userPrevious = value => {
 
   useEffect(() => {
     ref.current = value
-  }, value)
+  }, [value])
 
   return ref.current
 }
