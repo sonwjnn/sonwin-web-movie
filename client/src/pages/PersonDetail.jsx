@@ -12,6 +12,7 @@ import { setGlobalLoading } from '../redux/features/globalLoadingSlice'
 
 const PersonDetail = () => {
   const { personId } = useParams()
+
   const [person, setPerson] = useState()
   const dispatch = useDispatch()
 
@@ -22,7 +23,6 @@ const PersonDetail = () => {
       dispatch(setGlobalLoading(false))
       if (err) toast.error(err.message)
       if (response) {
-        console.log(123)
         setPerson(response)
       }
     }
@@ -67,9 +67,12 @@ const PersonDetail = () => {
               >
                 <Stack spacing={2}>
                   <Typography variant="h5" fontWeight="700">
-                    {`${person.name} (${person.birthday.split('-')[0]})`}
+                    {`${person.name} ${
+                      person.birthday
+                        ? `(${person.birthday.split('-')[0]})`
+                        : ''
+                    }`}
                     {person.deathday && ` -${person.deathday.split('-')[0]}`}
-                    {')'}
                   </Typography>
                   <Typography
                     sx={{

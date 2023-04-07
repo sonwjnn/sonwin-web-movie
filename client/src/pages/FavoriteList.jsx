@@ -20,14 +20,16 @@ const FavoriteItem = ({ media, onRemoved }) => {
     if (onRequest) return
     setOnRequest(true)
 
-    const { response, err } = await favoriteApi.remove({ favoriteId: media.id })
+    const { response, err } = await favoriteApi.remove({
+      favoriteId: media._id,
+    })
     setOnRequest(false)
 
     if (err) toast.error(err.message)
-
     if (response) {
       dispatch(removeFavorite({ mediaId: media.mediaId }))
-      onRemoved(media.id)
+      onRemoved(media._id)
+      toast.success('Remove favorite success!')
     }
   }
   return (
@@ -53,7 +55,6 @@ const FavoriteList = () => {
   const [filteredMedias, setFilteredMedias] = useState([])
   const [page, setPage] = useState(1)
   const [count, setCount] = useState(0)
-
   const dispatch = useDispatch()
 
   const skip = 8
@@ -81,8 +82,8 @@ const FavoriteList = () => {
     setPage(page + 1)
   }
 
-  const onRemoved = () => {
-    const newMedias = [...medias].filter(e => e.id !== id)
+  const onRemoved = id => {
+    const newMedias = [...medias].filter(e => e._id !== id)
     setMedias(newMedias)
     setFilteredMedias([...newMedias].splice(0, page * skip))
     setCount(page - 1)
