@@ -10,12 +10,14 @@ import { toast } from 'react-toastify'
 import userApi from '../../api/modules/user.api.js'
 import favoriteApi from '../../api/modules/favorite.api'
 import { setListFavorites, setUser } from '../../redux/features/userSlice.js'
+import { setThemeMode } from '../../redux/features/themeModeSlice.js'
 
 // Layout use for all pages
 const MainLayout = () => {
   const dispatch = useDispatch()
 
   const { user } = useSelector(state => state.user)
+  const { themeMode } = useSelector(state => state.themeMode)
 
   //get user from redux store with JWT
   useEffect(() => {
@@ -37,7 +39,10 @@ const MainLayout = () => {
       if (err) toast.error(err.message)
     }
 
-    if (user) getFavorites()
+    if (user) {
+      localStorage.setItem('theme', themeMode)
+      getFavorites()
+    }
 
     if (!user) dispatch(setListFavorites([]))
   }, [user, dispatch])

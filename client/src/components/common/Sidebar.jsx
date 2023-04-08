@@ -17,16 +17,15 @@ import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined'
 import { themeModes } from '../../configs/theme.configs'
 import { setThemeMode } from '../../redux/features/themeModeSlice'
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
 
 const Sidebar = ({ open, toggleSidebar }) => {
   const dispatch = useDispatch()
   const { user } = useSelector(state => state.user)
   const { appState } = useSelector(state => state.appState)
-  const { themeMode } = useSelector(state => state.themeMode)
+  // const { themeMode } = useSelector(state => state.themeMode)
+  const themeMode = localStorage.getItem('theme')
 
   const sidebarWidth = uiConfigs.size.sidebarWidth
-
   const onSwitchTheme = () => {
     const theme =
       themeMode === themeModes.dark ? themeModes.light : themeModes.dark
@@ -112,7 +111,7 @@ const Sidebar = ({ open, toggleSidebar }) => {
         <Typography variant="h6" marginBottom="20px">
           THEME
         </Typography>
-        <ListItemButton onClick={onSwitchTheme}>
+        <ListItemButton onClick={onSwitchTheme} sx={{ borderRadius: '10px' }}>
           <ListItemIcon>
             {themeMode === themeModes.dark && <DarkModeOutlinedIcon />}
             {themeMode === themeModes.light && <WbSunnyOutlinedIcon />}
