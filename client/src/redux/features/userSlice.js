@@ -26,8 +26,6 @@ export const userSlice = createSlice({
       state.listFavorites = [...state.listFavorites].filter(
         e => e.mediaId.toString() !== mediaId.toString()
       )
-
-      console.log(state.listFavorites)
     },
     addFavorite: (state, action) => {
       state.listFavorites = [action.payload, ...state.listFavorites]

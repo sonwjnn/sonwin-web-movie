@@ -46,8 +46,8 @@ const userApi = {
   },
   passwordUpdate: async ({ password, newPassword, confirmNewPassword }) => {
     try {
-      const response = await privateClient.put(userEndpoints.signup, {
-        username,
+      const response = await privateClient.put(userEndpoints.passwordUpdate, {
+        password,
         newPassword,
         confirmNewPassword,
       })

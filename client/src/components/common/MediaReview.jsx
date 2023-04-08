@@ -32,7 +32,7 @@ const ReviewItem = ({ review, onRemoved }) => {
     if (err) toast.error(err.message)
     if (response) onRemoved(review._id)
   }
-  
+
   return (
     <Box
       sx={{
@@ -153,7 +153,7 @@ const MediaReview = ({ reviews, media, mediaType }) => {
       <Container header={`Reviews (${reviewCount})`}>
         <Stack spacing={4} marginBottom={2}>
           {filteredReviews.map((item, index) => (
-            <Box key={index}>
+            <Box key={item._id}>
               <ReviewItem review={item} onRemoved={onRemoved} />
               <Divider
                 sx={{
